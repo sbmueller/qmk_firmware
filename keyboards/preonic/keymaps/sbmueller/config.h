@@ -1,5 +1,5 @@
 #pragma once
-
+#define UNICODE_SELECTED_MODES UC_LNX, UC_MAC
 #ifdef AUDIO_ENABLE
     #define STARTUP_SONG SONG(PREONIC_SOUND)
     // #define STARTUP_SONG SONG(NO_SOUND)
