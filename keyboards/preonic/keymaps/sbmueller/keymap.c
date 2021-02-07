@@ -32,7 +32,10 @@ enum preonic_keycodes {
   DVORAK,
   LOWER,
   RAISE,
-  BACKLIT
+  BACKLIT,
+  SHRUG,  // ¯\_(ツ)_/¯
+  TFLIP,  // (╯°□°)╯︵ ┻━┻
+  DPOINT  // (ಠ_ಠ)
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -102,11 +105,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
- * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Del |
+ * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  |  ß   |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Del  |
+ * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  |  Ü   |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  | LEFT | DOWN |  UP  |RIGHT |   }  |  |   |
+ * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  | LEFT | DOWN |  UP  |RIGHT |   Ö  |  Ä   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO ~ |ISO | | Home | End  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -114,11 +117,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid(
-  KC_TILD, KC_EXLM,  KC_AT,   KC_HASH, KC_DLR,   KC_PERC, KC_CIRC, KC_AMPR,       KC_ASTR,       KC_LPRN, KC_RPRN, KC_DEL,
-  KC_TILD, KC_EXLM,  KC_AT,   KC_HASH, KC_DLR,   KC_PERC, KC_CIRC, KC_AMPR,       KC_ASTR,       KC_LPRN, KC_RPRN, KC_DEL,
-  KC_DEL,  KC_F1,    KC_F2,   KC_F3,   KC_F4,    KC_F5,   KC_LEFT, KC_DOWN,       KC_UP,         KC_RGHT, KC_RCBR, KC_PIPE,
-  KC_TRNS, KC_F7,    KC_F8,   KC_F9,   KC_F10,   KC_F11,  KC_F12,  LSFT(KC_NUHS), LSFT(KC_NUBS), KC_HOME, KC_END,  KC_TRNS,
-  RGB_MOD, RGB_RMOD, RGB_HUD, RGB_HUI, KC_TRNS,  KC_TRNS, KC_TRNS, MO(5),         KC_MUTE,       KC_VOLD, KC_VOLU, KC_MPLY
+  KC_TILD, KC_EXLM,  KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,       KC_ASTR,       KC_LPRN, KC_RPRN,    ALGR(KC_S),
+  KC_TILD, KC_EXLM,  KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,       KC_ASTR,       KC_LPRN, KC_RPRN,    ALGR(KC_Y),
+  KC_DEL,  KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_LEFT, KC_DOWN,       KC_UP,         KC_RGHT, ALGR(KC_P), ALGR(KC_Q),
+  KC_TRNS, KC_F7,    KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  LSFT(KC_NUHS), LSFT(KC_NUBS), KC_HOME, KC_END,     KC_TRNS,
+  RGB_MOD, RGB_RMOD, RGB_HUD, RGB_HUI, KC_TRNS, KC_TRNS, KC_TRNS, MO(5),         KC_MUTE,       KC_VOLD, KC_VOLU,    KC_MPLY
 ),
 
 /* Raise
@@ -131,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |   7  |   8  |   9  |   0  | Bksp |   `  |ISO # |ISO / | Pg Up| Pg Dn|      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |ADJUST|             |      | Mute | Vol- | Vol+ | Play |
+ * |SHRUG |TFLIP |DPOINT|      |ADJUST|             |      | Mute | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid(
@@ -139,7 +142,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,  KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
   KC_DEL,  KC_1,    KC_2,    KC_3,    KC_4,  KC_5,    KC_6,    KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
   KC_TRNS, KC_7,    KC_8,    KC_9,    KC_0,  KC_BSPC, KC_GRV,  KC_NUHS, KC_NUBS, KC_PGUP, KC_PGDN, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(5), KC_TRNS, KC_TRNS, KC_TRNS, KC_MUTE, KC_VOLD, KC_VOLU, KC_MPLY
+  SHRUG,   TFLIP,   DPOINT,  KC_TRNS, MO(5), KC_TRNS, KC_TRNS, KC_TRNS, KC_MUTE, KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
 /* Adjust (Lower + Raise)
@@ -220,6 +223,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             #ifdef __AVR__
             writePinHigh(E6);
             #endif
+          }
+          return false;
+          break;
+        case SHRUG:
+          if (record->event.pressed) {
+            send_unicode_string("¯\\_(ツ)_/¯");
+          }
+          return false;
+          break;
+        case TFLIP:
+          if (record->event.pressed) {
+            send_unicode_string("(╯°□°)╯︵ ┻━┻");
+          }
+          return false;
+          break;
+        case DPOINT:
+          if (record->event.pressed) {
+            send_unicode_string("(ಠ_ಠ)");
           }
           return false;
           break;
