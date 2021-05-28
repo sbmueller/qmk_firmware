@@ -1,2 +1,3 @@
 SRC += muse.c
 UNICODE_ENABLE = yes
+ENCODER_ENABLE = yes
