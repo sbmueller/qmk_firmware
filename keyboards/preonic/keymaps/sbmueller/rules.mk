@@ -2,4 +2,3 @@ SRC += muse.c
 UNICODE_ENABLE = yes
 ENCODER_ENABLE = yes
 AUDIO_ENABLE = yes
-DIP_SWITCH_ENABLE = no
