@@ -17,29 +17,24 @@
 #include QMK_KEYBOARD_H
 #include "muse.h"
 
-enum preonic_layers {
-  _QWERTY,
-  _COLEMAK,
-  _DVORAK,
-  _LOWER,
-  _RAISE,
-  _ADJUST
-};
+enum preonic_layers { _QWERTY, _COLEMAK, _DVORAK, _LOWER, _RAISE, _ADJUST };
 
 enum preonic_keycodes {
-  QWERTY = SAFE_RANGE,
-  COLEMAK,
-  DVORAK,
-  LOWER,
-  RAISE,
-  BACKLIT,
-  SHRUG,  // ¯\_(ツ)_/¯
-  TFLIP,  // (╯°□°)╯︵ ┻━┻
-  DPOINT  // (ಠ_ಠ)
+    QWERTY = SAFE_RANGE,
+    COLEMAK,
+    DVORAK,
+    LOWER,
+    RAISE,
+    BACKLIT,
+    SHRUG,   // ¯\_(ツ)_/¯
+    TFLIP,   // (╯°□°)╯︵ ┻━┻
+    DPOINT,  // (ಠ_ಠ)
+    TAUNTXT
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
+    // clang-format off
 /* Qwerty
  * ,-----------------------------------------------------------------------------------.
  * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
@@ -61,25 +56,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_MUTE, KC_LCTL, KC_LGUI, KC_LALT, MO(_LOWER), KC_SPC, KC_SPC, MO(_RAISE), RCS(KC_M), SHRUG,  TFLIP,   RGB_TOG
 ),
 
-/* Colemak - deprecated
+/* Colemak
  * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+ * |      |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  |ENTER |
+ * |      |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  |      |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |  "   |
+ * |      |   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Shift |
+ * |      |   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | Alt  | GUI  | RGBT |Lower |    Space    |Raise | Mute | Vol- | Vol+ | Play |
+ * |      |      |      |      |Lower |    Space    |Raise |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK] = LAYOUT_preonic_grid(
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,       KC_5,    KC_6,   KC_7,       KC_8,    KC_9,    KC_0,    KC_BSPC,
-  KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,       KC_G,    KC_J,   KC_L,       KC_U,    KC_Y,    KC_SCLN, KC_ENT,
-  KC_ESC,  KC_A,    KC_R,    KC_S,    KC_T,       KC_D,    KC_H,   KC_N,       KC_E,    KC_I,    KC_O,    KC_QUOT,
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,       KC_B,    KC_K,   KC_M,       KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-  KC_LCTL, KC_LALT, KC_LGUI, RGB_TOG, MO(_LOWER), KC_SPC,  KC_SPC, MO(_RAISE), KC_MUTE, KC_VOLD, KC_VOLU, KC_MPLY
+  KC_TRNS, KC_1,    KC_2,    KC_3,    KC_4,       KC_5,    KC_6,   KC_7,       KC_8,    KC_9,    KC_0,    KC_TRNS,
+  KC_TRNS, KC_Q,    KC_W,    KC_F,    KC_P,       KC_G,    KC_J,   KC_L,       KC_U,    KC_Y,    KC_SCLN, KC_TRNS,
+  KC_TRNS, KC_A,    KC_R,    KC_S,    KC_T,       KC_D,    KC_H,   KC_N,       KC_E,    KC_I,    KC_O,    KC_TRNS,
+  KC_TRNS, KC_Z,    KC_X,    KC_C,    KC_V,       KC_B,    KC_K,   KC_M,       KC_COMM, KC_DOT,  KC_SLSH, KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(_LOWER), KC_SPC,  KC_SPC, MO(_RAISE), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
 ),
 
 /* Dvorak - deprecated
@@ -113,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      | RGB- |RGBH- |RGBV- |UC_MOD|      |      |PgDown| PgUp | Home | End  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      | RGBT |      |             |ADJUST| Mute | Vol- | Vol+ | Play |
+ * |      |      |TAUNTX| RGBT |      |             |ADJUST|TAUNTX|      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid(
@@ -121,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TILD, KC_EXLM,  KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,   KC_ASTR, KC_LPRN, ALGR(KC_Y), KC_NO,
   KC_DEL,  RGB_RMOD, RGB_HUI, RGB_VAI, KC_TRNS, KC_TRNS, KC_LEFT, KC_DOWN,   KC_UP,   KC_RGHT, ALGR(KC_P), ALGR(KC_Q),
   KC_TRNS, RGB_MOD,  RGB_HUD, RGB_VAD, UC_MOD,  KC_TRNS, KC_TRNS, KC_PGDOWN, KC_PGUP, KC_HOME, KC_END,     KC_TRNS,
-  KC_TRNS, KC_TRNS,  KC_TRNS, RGB_TOG, KC_TRNS, KC_TRNS, KC_TRNS, MO(5),     KC_MUTE, KC_VOLD, KC_VOLU,    KC_MPLY
+  KC_TRNS, KC_TRNS,  KC_TRNS, RGB_TOG, KC_TRNS, KC_TRNS, KC_TRNS, MO(5),     TAUNTXT, KC_TRNS, KC_TRNS,    KC_TRNS
 ),
 
 /* Raise
@@ -166,117 +161,141 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______, _______, _______,      _______,      _______,      _______, _______
 )
 
+    // clang-format on
 
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
+    static bool taunttext_active = false;
+
+    if (taunttext_active) {
+        if (record->event.pressed) {
+            if (keycode != KC_SPC) {
+                // Press CAPSLOCK once
+                register_code(KC_CAPS);
+                unregister_code(KC_CAPS);
+            }
+        }
+    }
+    switch (keycode) {
+        case TAUNTXT:
+            if (record->event.pressed) {
+                taunttext_active = !taunttext_active;
+                // when it's turned on, toggle caps lock (makes first letter lowercase)
+                if (taunttext_active) {
+                    // Press CAPSLOCK once
+                    register_code(KC_CAPS);
+                    unregister_code(KC_CAPS);
+                }
+            }
+            return false;
+            break;
         case QWERTY:
-          if (record->event.pressed) {
-            set_single_persistent_default_layer(_QWERTY);
-          }
-          return false;
-          break;
+            if (record->event.pressed) {
+                set_single_persistent_default_layer(_QWERTY);
+            }
+            return false;
+            break;
         case COLEMAK:
-          if (record->event.pressed) {
-            set_single_persistent_default_layer(_COLEMAK);
-          }
-          return false;
-          break;
+            if (record->event.pressed) {
+                set_single_persistent_default_layer(_COLEMAK);
+            }
+            return false;
+            break;
         case DVORAK:
-          if (record->event.pressed) {
-            set_single_persistent_default_layer(_DVORAK);
-          }
-          return false;
-          break;
+            if (record->event.pressed) {
+                set_single_persistent_default_layer(_DVORAK);
+            }
+            return false;
+            break;
         case LOWER:
-          if (record->event.pressed) {
-            layer_on(_LOWER);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
-          } else {
-            layer_off(_LOWER);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
-          }
-          return false;
-          break;
+            if (record->event.pressed) {
+                layer_on(_LOWER);
+                update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            } else {
+                layer_off(_LOWER);
+                update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            }
+            return false;
+            break;
         case RAISE:
-          if (record->event.pressed) {
-            layer_on(_RAISE);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
-          } else {
-            layer_off(_RAISE);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
-          }
-          return false;
-          break;
+            if (record->event.pressed) {
+                layer_on(_RAISE);
+                update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            } else {
+                layer_off(_RAISE);
+                update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            }
+            return false;
+            break;
         case BACKLIT:
-          if (record->event.pressed) {
-            register_code(KC_RSFT);
-            #ifdef BACKLIGHT_ENABLE
-              backlight_step();
-            #endif
-            #ifdef __AVR__
-            writePinLow(E6);
-            #endif
-          } else {
-            unregister_code(KC_RSFT);
-            #ifdef __AVR__
-            writePinHigh(E6);
-            #endif
-          }
-          return false;
-          break;
+            if (record->event.pressed) {
+                register_code(KC_RSFT);
+#ifdef BACKLIGHT_ENABLE
+                backlight_step();
+#endif
+#ifdef __AVR__
+                writePinLow(E6);
+#endif
+            } else {
+                unregister_code(KC_RSFT);
+#ifdef __AVR__
+                writePinHigh(E6);
+#endif
+            }
+            return false;
+            break;
         case SHRUG:
-          if (record->event.pressed) {
-            send_unicode_string("¯\\_(ツ)_/¯");
-          }
-          return false;
-          break;
+            if (record->event.pressed) {
+                send_unicode_string("¯\\_(ツ)_/¯");
+            }
+            return false;
+            break;
         case TFLIP:
-          if (record->event.pressed) {
-            send_unicode_string("(╯°□°)╯︵ ┻━┻");
-          }
-          return false;
-          break;
+            if (record->event.pressed) {
+                send_unicode_string("(╯°□°)╯︵ ┻━┻");
+            }
+            return false;
+            break;
         case DPOINT:
-          if (record->event.pressed) {
-            send_unicode_string("(ಠ_ಠ)");
-          }
-          return false;
-          break;
-      }
+            if (record->event.pressed) {
+                send_unicode_string("(ಠ_ಠ)");
+            }
+            return false;
+            break;
+    }
     return true;
 };
 
-bool muse_mode = false;
-uint8_t last_muse_note = 0;
-uint16_t muse_counter = 0;
-uint8_t muse_offset = 70;
-uint16_t muse_tempo = 50;
+bool     muse_mode      = false;
+uint8_t  last_muse_note = 0;
+uint16_t muse_counter   = 0;
+uint8_t  muse_offset    = 70;
+uint16_t muse_tempo     = 50;
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
-  if (muse_mode) {
-    if (IS_LAYER_ON(_RAISE)) {
-      if (clockwise) {
-        muse_offset++;
-      } else {
-        muse_offset--;
-      }
+    if (muse_mode) {
+        if (IS_LAYER_ON(_RAISE)) {
+            if (clockwise) {
+                muse_offset++;
+            } else {
+                muse_offset--;
+            }
+        } else {
+            if (clockwise) {
+                muse_tempo += 1;
+            } else {
+                muse_tempo -= 1;
+            }
+        }
     } else {
-      if (clockwise) {
-        muse_tempo+=1;
-      } else {
-        muse_tempo-=1;
-      }
+        if (clockwise) {
+            tap_code(KC_VOLU);
+        } else {
+            tap_code(KC_VOLD);
+        }
     }
-  } else {
-    if (clockwise) {
-      tap_code(KC_VOLU);
-    } else {
-      tap_code(KC_VOLD);
-    }
-  }
-  return true;
+    return true;
 }
 
 bool dip_switch_update_user(uint8_t index, bool active) {
@@ -297,7 +316,6 @@ bool dip_switch_update_user(uint8_t index, bool active) {
     }
     return true;
 }
-
 
 void matrix_scan_user(void) {
 #ifdef AUDIO_ENABLE
@@ -321,11 +339,11 @@ void matrix_scan_user(void) {
 }
 
 bool music_mask_user(uint16_t keycode) {
-  switch (keycode) {
-    case RAISE:
-    case LOWER:
-      return false;
-    default:
-      return true;
-  }
+    switch (keycode) {
+        case RAISE:
+        case LOWER:
+            return false;
+        default:
+            return true;
+    }
 }
