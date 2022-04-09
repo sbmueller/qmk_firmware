@@ -36,3 +36,6 @@
 #define ENCODER_RESOLUTION 4
 #define TAP_CODE_DELAY 10
 #define ENCODER_DIRECTION_FLIP
+
+// Will trigger mod tap for any two keys pressed
+#define HOLD_ON_OTHER_KEY_PRESS
