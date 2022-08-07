@@ -19,8 +19,15 @@
 // Lets you roll mod-tap keys
 #define IGNORE_MOD_TAP_INTERRUPT
 #ifdef OLED_ENABLE
-  #define OLED_DISPLAY_128X64
+#    define OLED_DISPLAY_128X64
 #endif
+#define RGBLIGHT_SLEEP
 
 #define IGNORE_MOD_TAP_INTERRUPT
 #define SPLIT_WPM_ENABLE
+#define OLED_TIMEOUT 20000
+
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
+#define NO_ACTION_ONESHOT
+#define TAPPING_FORCE_HOLD
