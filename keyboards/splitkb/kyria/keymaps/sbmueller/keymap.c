@@ -13,6 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include "quantum_keycodes.h"
 #include QMK_KEYBOARD_H
 
 char wpm_str[10];
@@ -115,9 +116,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Nav Layer: Media, navigation
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |      |      |      |      |      |                              | PgUp | Home | PgDwn| End  | VolUp| Delete |
+ * |        |      |      |      |      |      |                              | PgUp | Home | PgDwn| End  |  ß   |   Ü    |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |  GUI |  Alt | Ctrl | Shift|      |                              |  ←   |   ↓  |   ↑  |   →  | VolDn| Insert |
+ * |        |  GUI |  Alt | Ctrl | Shift|      |                              |  ←   |   ↓  |   ↑  |   →  |  Ö   |   Ä    |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |ScLck |  |      |      | Pause|M Prev|M Play|M Next|VolMut| PrtSc  |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
@@ -126,8 +127,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_NAV] = LAYOUT(
-      _______, _______, _______, _______, _______, _______,                                     KC_PGUP, KC_HOME, KC_PGDN,   KC_END,  KC_VOLU, KC_DEL,
-      _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                     KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_VOLD, KC_INS,
+      _______, _______, _______, _______, _______, _______,                                     KC_PGUP, KC_HOME, KC_PGDN,  KC_END,  ALGR(KC_S), ALGR(KC_Y),
+      _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                     KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, ALGR(KC_P), ALGR(KC_Q),
       _______, _______, _______, _______, _______, _______, _______, KC_SLCK, _______, _______,KC_PAUSE, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_PSCR,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
@@ -178,7 +179,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Adjust Layer: Default layer settings, RGB
  *
  * ,----------------------------------------------.                              ,-------------------------------------------.
- * | RGB_TOG|        |       |QWERTY|      |      |                              |      |      |      |      |      |        |
+ * | RGB_TOG|        |       |QWERTY|      |      |                              |      |      |      |      |      | Delete |
  * |--------+--------+-------+------+------+------|                              |------+------+------+------+------+--------|
  * |RGB_HUI |RGB_RMOD|RGB_VAI|      |      |      |                              | TOG  | SAI  | HUI  | VAI  | MOD  |        |
  * |--------+--------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
@@ -189,7 +190,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                           `----------------------------------'  `----------------------------------'
  */
     [_ADJUST] = LAYOUT(
-      RGB_TOG, _______, _______, QWERTY , _______, _______,                                    _______, _______, _______, _______,  _______, _______,
+      RGB_TOG, _______, _______, QWERTY , _______, _______,                                    _______, _______, _______, _______,  _______,  KC_DEL,
       RGB_HUI, RGB_RMOD, RGB_VAI, _______ , _______, _______,                                    RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI,  RGB_MOD, _______,
       RGB_HUD, RGB_MOD,  RGB_VAD, _______, _______, _______,_______, _______, _______, _______, _______, RGB_SAD, RGB_HUD, RGB_VAD, RGB_RMOD, _______,
                                  _______, _______, _______,_______, _______, _______, _______, _______, _______, _______
