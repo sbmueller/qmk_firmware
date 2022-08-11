@@ -57,17 +57,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |Ctrl/Esc|   A  |   S  |   D  |   F  |   G  |                              |   H  |   J  |   K  |   L  | ;  : |Ctrl/' "|
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  | [ {  |F-keys|  |CapsLk|  ] } |   N  |   M  | ,  < | . >  | /  ? | RShift |
+ * | LShift |   Z  |   X  |   C  |   V  |   B  | [ {  |F-keys|  |Adjust|  ] } |   N  |   M  | ,  < | . >  | /  ? | RShift |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |Adjust| LGUI | Space| Bksp |  Nav |  | Sym  | AltGr| Space| Alt/ | Menu |
+ *                        | Mute | LGUI | Space| Bksp |  Nav |  | Sym  | AltGr| Space| Alt/ | Menu |
  *                        |      |      |      |      |      |  |      |      |      | Enter|      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_QWERTY] = LAYOUT(
      KC_TAB  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                        KC_Y,   KC_U ,  KC_I ,   KC_O ,  KC_P , KC_BSPC,
      CTL_ESC , KC_A ,  KC_S   ,  KC_D  ,   KC_F ,   KC_G ,                                        KC_H,   KC_J ,  KC_K ,   KC_L ,KC_SCLN,CTL_QUOT,
-     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B ,  KC_LBRC, FKEYS,     KC_CAPS  , KC_RBRC, KC_N,   KC_M ,KC_COMM, KC_DOT ,KC_SLSH, KC_RSFT,
-                                ADJUST , KC_LGUI,   KC_SPC, KC_BSPC, NAV,       SYM   , KC_RALT, KC_SPC, ALT_ENT, KC_APP
+     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B ,  KC_LBRC, FKEYS,      ADJUST  , KC_RBRC, KC_N,   KC_M ,KC_COMM, KC_DOT ,KC_SLSH, KC_RSFT,
+                                 KC_MUTE , KC_LGUI,   KC_SPC, KC_BSPC, NAV,       SYM   , KC_RALT, KC_SPC, ALT_ENT, KC_APP
     ),
 
 /*
@@ -158,7 +158,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Function Layer: Function keys
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |  F9  | F10  | F11  | F12  |      |                              |      |  7   |  8   |  9   |      |        |
+ * |        |  F9  | F10  | F11  | F12  |      |                              |      |  7   |  8   |  9   |      | Delete |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |        |  F5  |  F6  |  F7  |  F8  |      |                              |      |  4   |  5   |  6   |      |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
@@ -169,7 +169,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_FUNCTION] = LAYOUT(
-      _______,  KC_F9 ,  KC_F10,  KC_F11,  KC_F12, _______,                                     _______, KC_7,    KC_8,   KC_9, _______, _______,
+      _______,  KC_F9 ,  KC_F10,  KC_F11,  KC_F12, _______,                                     _______, KC_7,    KC_8,   KC_9, _______, KC_DEL,
       _______,  KC_F5 ,  KC_F6 ,  KC_F7 ,  KC_F8 , _______,                                     _______, KC_4,    KC_5,   KC_6, _______, _______,
       _______,  KC_F1 ,  KC_F2 ,  KC_F3 ,  KC_F4 , _______, _______, _______, _______, _______, KC_0,    KC_1,    KC_2,   KC_3, _______, _______,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
@@ -179,10 +179,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Adjust Layer: Default layer settings, RGB
  *
  * ,----------------------------------------------.                              ,-------------------------------------------.
- * | RGB_TOG|        |       |QWERTY|      |      |                              |      |      |      |      |      | Delete |
+ * | RGB_TOG|        |       |QWERTY|      |      |                              |      |      |      |      |      |        |
  * |--------+--------+-------+------+------+------|                              |------+------+------+------+------+--------|
  * |RGB_HUI |RGB_RMOD|RGB_VAI|      |      |      |                              | TOG  | SAI  | HUI  | VAI  | MOD  |        |
- * |--------+--------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+ * |--------+--------+-------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |RGB_HUD |RGB_MOD |RGB_VAD|      |      |      |      |      |  |      |      |      | SAD  | HUD  | VAD  | RMOD |        |
  * `-------------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                           |      |      |      |      |      |  |      |      |      |      |      |
@@ -190,7 +190,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                           `----------------------------------'  `----------------------------------'
  */
     [_ADJUST] = LAYOUT(
-      RGB_TOG, _______, _______, QWERTY , _______, _______,                                    _______, _______, _______, _______,  _______,  KC_DEL,
+      RGB_TOG, _______, _______, QWERTY , _______, _______,                                    _______, _______, _______, _______,  _______,  _______,
       RGB_HUI, RGB_RMOD, RGB_VAI, _______ , _______, _______,                                    RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI,  RGB_MOD, _______,
       RGB_HUD, RGB_MOD,  RGB_VAD, _______, _______, _______,_______, _______, _______, _______, _______, RGB_SAD, RGB_HUD, RGB_VAD, RGB_RMOD, _______,
                                  _______, _______, _______,_______, _______, _______, _______, _______, _______, _______
@@ -223,7 +223,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #define TAP_FRAMES 2
 #define ANIM_WPM_LOWER 20 // above this wpm value typing animation to triggered
 #define ANIM_FRAME_DURATION_MAX 450 // longest animation duration in ms
-#define ANIM_FRAME_DURATION_MIN 100 // shortest animation duration in ms
+#define ANIM_FRAME_DURATION_MIN 50 // shortest animation duration in ms
 #define IDLE_FRAME_DURATION 300 // base value for how long each idle animation will last in ms
 #define ANIM_FRAME_RATIO 2.5 // how aggressively animation speeds up with wpm
 #define ANIM_SIZE 1024 // number of bytes in array, minimize for adequate firmware size, max is 1024
