@@ -128,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NAV] = LAYOUT(
       _______, _______, _______, _______, _______, _______,                                     KC_PGUP,  KC_HOME, KC_PGDN, KC_END,  ALGR(KC_S), ALGR(KC_Y),
       _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                     KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, ALGR(KC_P), ALGR(KC_Q),
-      _______, _______, _______, _______, _______, _______, _______, KC_SLCK, _______, _______, KC_PAUSE, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE,    KC_PSCR,
+      _______, _______, _______, _______, _______, _______, _______, KC_SCRL, _______, _______, KC_PAUSE, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE,    KC_PSCR,
                                  _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______
     ),
 
