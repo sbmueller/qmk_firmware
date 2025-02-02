@@ -16,6 +16,12 @@
 
 #pragma once
 
+/* Mouse */
+#define MOUSEKEY_WHEEL_DELTA 3
+
+// Will trigger mod tap for any two keys pressed
+#define HOLD_ON_OTHER_KEY_PRESS
+
 /* Encoder Configuration */
 #define ENCODER_DEFAULT_POS 0x3
 #define ENCODER_MAP_KEY_DELAY 2
@@ -41,14 +47,11 @@
 
 #        define LED_DRIVER_SHUTDOWN_PIN B7
 
-#        define BT_HOST_LED_MATRIX_LIST \
-            { 13, 14, 15 }
+#        define BT_HOST_LED_MATRIX_LIST {13, 14, 15}
 
-#        define P2P4G_HOST_LED_MATRIX_LIST \
-            { 16 }
+#        define P2P4G_HOST_LED_MATRIX_LIST {16}
 
-#        define BAT_LEVEL_LED_LIST \
-            { 0,  1,  2,  3,  4,  5,  6,  7,  8,  9 }
+#        define BAT_LEVEL_LED_LIST {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 
 /* Backlit disable timeout when keyboard is disconnected(unit: second) */
 #        define DISCONNECTED_BACKLIGHT_DISABLE_TIMEOUT 40
